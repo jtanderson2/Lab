@@ -1,0 +1,72 @@
+set interfaces ethernet eth0 address '192.168.0.118/24'
+set interfaces ethernet eth0 description 'FGT100-INET_1'
+set interfaces ethernet eth0 hw-id '00:0c:29:f3:c2:3e'
+set interfaces ethernet eth0 offload gro
+set interfaces ethernet eth0 offload gso
+set interfaces ethernet eth0 offload sg
+set interfaces ethernet eth0 offload tso
+set interfaces ethernet eth1 address '100.64.11.254/24'
+set interfaces ethernet eth1 description 'FGT100-INET_1 VLAN6'
+set interfaces ethernet eth1 hw-id '00:0c:29:f3:c2:48'
+set interfaces ethernet eth1 offload gro
+set interfaces ethernet eth1 offload gso
+set interfaces ethernet eth1 offload sg
+set interfaces ethernet eth1 offload tso
+set interfaces ethernet eth2 address '100.64.12.254/24'
+set interfaces ethernet eth2 description 'FGT100-INET_2 VLAN7'
+set interfaces ethernet eth2 hw-id '00:0c:29:f3:c2:52'
+set interfaces ethernet eth2 offload gro
+set interfaces ethernet eth2 offload gso
+set interfaces ethernet eth2 offload sg
+set interfaces ethernet eth2 offload tso
+set interfaces ethernet eth3 address '100.64.13.254/24'
+set interfaces ethernet eth3 description 'FGT101-INET_1 VLAN8'
+set interfaces ethernet eth3 hw-id '00:0c:29:f3:c2:5c'
+set interfaces ethernet eth3 offload gro
+set interfaces ethernet eth3 offload gso
+set interfaces ethernet eth3 offload sg
+set interfaces ethernet eth3 offload tso
+set interfaces ethernet eth4 address '100.64.14.254/24'
+set interfaces ethernet eth4 description 'FGT101-INET_2 VLAN9'
+set interfaces ethernet eth4 hw-id '00:0c:29:f3:c2:66'
+set interfaces ethernet eth4 offload gro
+set interfaces ethernet eth4 offload gso
+set interfaces ethernet eth4 offload sg
+set interfaces ethernet eth4 offload tso
+set interfaces ethernet eth5 address '100.64.15.254/24'
+set interfaces ethernet eth5 description 'FGT102-INET_1 VLAN10'
+set interfaces ethernet eth5 hw-id '00:0c:29:f3:c2:70'
+set interfaces ethernet eth5 offload gro
+set interfaces ethernet eth5 offload gso
+set interfaces ethernet eth5 offload sg
+set interfaces ethernet eth5 offload tso
+set interfaces ethernet eth6 address '100.64.16.254/24'
+set interfaces ethernet eth6 description 'FGT102-INET_2 VLAN11'
+set interfaces loopback lo
+set nat source rule 100 outbound-interface name 'eth0'
+set nat source rule 100 source address '0.0.0.0/0'
+set nat source rule 100 translation address 'masquerade'
+set protocols static route 0.0.0.0/0 next-hop 192.168.0.1
+set service dhcp-server shared-network-name FGT100-1 authoritative
+set service dhcp-server shared-network-name FGT100-1 subnet 100.64.11.0/24 option default-router '100.64.11.254'
+set service dhcp-server shared-network-name FGT100-1 subnet 100.64.11.0/24 range 0 start '100.64.11.1'
+set service dhcp-server shared-network-name FGT100-1 subnet 100.64.11.0/24 range 0 stop '100.64.11.1'
+set service dhcp-server shared-network-name FGT100-1 subnet 100.64.11.0/24 subnet-id '1'
+set service dhcp-server shared-network-name FGT100-2 authoritative
+set service dhcp-server shared-network-name FGT100-2 subnet 100.64.12.0/24 option default-router '100.64.12.254'
+set service dhcp-server shared-network-name FGT100-2 subnet 100.64.12.0/24 range 0 start '100.64.12.1'
+set service dhcp-server shared-network-name FGT100-2 subnet 100.64.12.0/24 range 0 stop '100.64.12.1'
+set service dhcp-server shared-network-name FGT100-2 subnet 100.64.12.0/24 subnet-id '2'
+set service dhcp-server shared-network-name FGT101-1 authoritative
+set service dhcp-server shared-network-name FGT101-1 subnet 100.64.13.0/24 option default-router '100.64.13.254'
+set service dhcp-server shared-network-name FGT101-1 subnet 100.64.13.0/24 range 0 start '100.64.13.1'
+set service dhcp-server shared-network-name FGT101-1 subnet 100.64.13.0/24 range 0 stop '100.64.13.1'
+set service dhcp-server shared-network-name FGT101-1 subnet 100.64.13.0/24 subnet-id '3'
+set service dhcp-server shared-network-name FGT101-2 authoritative
+set service dhcp-server shared-network-name FGT101-2 subnet 100.64.14.0/24 option default-router '100.64.14.254'
+set service dhcp-server shared-network-name FGT101-2 subnet 100.64.14.0/24 range 0 start '100.64.14.1'
+set service dhcp-server shared-network-name FGT101-2 subnet 100.64.14.0/24 range 0 stop '100.64.14.1'
+set service dhcp-server shared-network-name FGT101-2 subnet 100.64.14.0/24 subnet-id '4'
+set service dhcp-server shared-network-name FGT102-1 subnet 100.64.15.0/24 option default-router '100.64.15.254'
+set service ssh port '22'
+set system host-name 'rtr1'
